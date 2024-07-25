@@ -1,5 +1,6 @@
 package com.fincatto.views;
 
+import com.fincatto.views.admin.ViewEmpresas;
 import com.fincatto.views.home.HomeView;
 import com.fincatto.views.myview.MyViewView;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -50,16 +51,14 @@ public class MainLayout extends AppLayout {
 
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
-
         nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
+        nav.addItem(new SideNavItem("Empresas", ViewEmpresas.class, LineAwesomeIcon.BUILDING.create()));
         nav.addItem(new SideNavItem("My View", MyViewView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-
         return nav;
     }
 
     private Footer createFooter() {
         Footer layout = new Footer();
-
         return layout;
     }
 

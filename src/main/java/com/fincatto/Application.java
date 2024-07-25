@@ -5,16 +5,17 @@ import com.vaadin.flow.theme.Theme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 /**
  * The entry point of the Spring Boot application.
- *
+ * <p>
  * Use the @PWA annotation make the application installable on phones, tablets
  * and some desktop browsers.
- *
  */
 @SpringBootApplication
 @Theme(value = "scvet")
@@ -27,7 +28,12 @@ public class Application implements AppShellConfigurator {
     private Environment environment;
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        final ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        if (context.getEnvironment().getActiveProfiles().length > 0) {
+            Loggable.getLogger(Application.class).info("Sistema iniciando em modo de produção");
+        } else {
+            final String porta = Objects.requireNonNullElse(context.getEnvironment().getProperty("local.server.port"), "8080");
+            Loggable.getLogger(Application.class).info("Sistema em modo de desenvolvimento: http://localhost:{}", porta);
+        }
     }
-
 }
