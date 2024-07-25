@@ -17,8 +17,8 @@ public class ViewEmpresas extends VerticalLayout {
 
     public ViewEmpresas(@Autowired ServiceEmpresa service) {
         Grid<EntityEmpresa> grid = new Grid<>(service.findAll());
-        grid.addColumn(EntityEmpresa::getDocumento).setHeader("Documento");
-        grid.addColumn(EntityEmpresa::getNome).setHeader("Nome");
+        grid.addColumn(EntityEmpresa::getDocumento).setHeader("Documento").setSortable(true);
+        grid.addColumn(EntityEmpresa::getNome).setHeader("Nome").setSortable(true);
         grid.addSelectionListener(selection -> {
             Optional<EntityEmpresa> optionalEmpresa = selection.getFirstSelectedItem();
             optionalEmpresa.ifPresent(entityEmpresa -> System.out.printf("Empresa selecionada: %s%n", entityEmpresa.getId()));
