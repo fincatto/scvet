@@ -5,9 +5,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @PageTitle("Tutores")
+@RolesAllowed("USER")
 @Route(value = "tutores", layout = DFSistemaLayout.class)
 @RouteAlias(value = "", layout = DFSistemaLayout.class)
 public class DFSistemaViewTutores extends VerticalLayout {

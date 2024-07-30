@@ -7,11 +7,13 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
 @PageTitle("Empresas")
+@RolesAllowed("ADMIN")
 @Route(value = "empresas", layout = DFAdminLayout.class)
 @RouteAlias(value = "", layout = DFAdminLayout.class)
 public class DFAdminViewEmpresas extends VerticalLayout {

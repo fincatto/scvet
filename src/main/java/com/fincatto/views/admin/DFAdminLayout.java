@@ -2,22 +2,34 @@ package com.fincatto.views.admin;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
-import com.vaadin.flow.component.html.*;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Footer;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Header;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.Scroller;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RoutePrefix;
+import com.vaadin.flow.spring.security.AuthenticationContext;
 import com.vaadin.flow.theme.lumo.LumoUtility;
+import jakarta.annotation.security.RolesAllowed;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
+//@RolesAllowed("ADMIN")
 @RoutePrefix(value = "admin")
 public class DFAdminLayout extends AppLayout {
 
+    private final transient AuthenticationContext authContext;
+
     private H1 viewTitle;
 
-    public DFAdminLayout() {
+    public DFAdminLayout(AuthenticationContext authContext) {
+        this.authContext = authContext;
+
         setPrimarySection(Section.DRAWER);
         addDrawerContent();
         addHeaderContent();
@@ -30,7 +42,18 @@ public class DFAdminLayout extends AppLayout {
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
 
-        addToNavbar(true, toggle, viewTitle);
+        HorizontalLayout
+                header =
+                authContext.getAuthenticatedUser(UserDetails.class)
+                        .map(user -> {
+                            Button logout = new Button("Logout", click ->
+                                    this.authContext.logout());
+                            Span loggedUser = new Span("Welcome " + user.getUsername());
+                            return new HorizontalLayout(viewTitle, loggedUser, logout);
+                        }).orElseGet(() -> new HorizontalLayout(viewTitle));
+
+
+        addToNavbar(true, toggle, header);
     }
 
     private void addDrawerContent() {

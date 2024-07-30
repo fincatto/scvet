@@ -4,9 +4,11 @@ import com.fincatto.services.DFServiceEmpresa;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @PageTitle("Animais")
+@RolesAllowed("USER")
 @Route(value = "animais", layout = DFSistemaLayout.class)
 public class DFSistemaViewAnimais extends VerticalLayout {
 
@@ -23,3 +25,4 @@ public class DFSistemaViewAnimais extends VerticalLayout {
     }
 
 }
+

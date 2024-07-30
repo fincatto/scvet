@@ -1,7 +1,5 @@
 package com.fincatto.views.sistema;
 
-import com.fincatto.views.admin.DFAdminViewAnimais;
-import com.fincatto.views.admin.DFAdminViewEmpresas;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -16,6 +14,7 @@ import com.vaadin.flow.router.RoutePrefix;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
+//@RolesAllowed("USER")
 @RoutePrefix(value = "sistema")
 public class DFSistemaLayout extends AppLayout {
 
