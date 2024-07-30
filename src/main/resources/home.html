@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle Veterinário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #009688;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.2em;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .feature {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+        }
+        .feature img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        .feature h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta button {
+            background: #009688;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .cta button:hover {
+            background: #00796b;
+        }
+        footer {
+            background: #009688;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+            }
+            .feature {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Sistema de Controle Veterinário</h1>
+    </div>
+</header>
+<section class="hero">
+    <div class="container">
+        <h2>Cuide da saúde dos seus pets com facilidade</h2>
+        <p>Nosso sistema oferece uma gestão completa para clínicas veterinárias e cuidadores de animais.</p>
+    </div>
+</section>
+<section class="features">
+    <div class="container">
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Gerenciamento de Pacientes">
+            <h3>Gerenciamento de Pacientes</h3>
+            <p>Cadastre e acompanhe o histórico de saúde dos animais de forma fácil e eficiente.</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Agenda de Consultas">
+            <h3>Agenda de Consultas</h3>
+            <p>Organize e controle todos os agendamentos de consultas e exames.</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/100" alt="Financeiro">
+            <h3>Controle Financeiro</h3>
+            <p>Mantenha o controle das finanças com relatórios detalhados e gestão de pagamentos.</p>
+        </div>
+    </div>
+</section>
+<section class="cta">
+    <h2>Pronto para começar?</h2>
+    <p>Experimente nosso sistema e veja como podemos ajudar a transformar a gestão da sua clínica!</p>
+    <button onclick="window.location.href='https://example.com/cadastro'">Comece Agora</button>
+</section>
+<footer>
+    <p>&copy; 2024 Sistema de Controle Veterinário. Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>

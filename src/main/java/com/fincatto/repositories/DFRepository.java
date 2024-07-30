@@ -1,5 +1,5 @@
 package com.fincatto.repositories;
 
-public interface Repository {
+public interface DFRepository {
     //EntityManager getEntityManager()
 }

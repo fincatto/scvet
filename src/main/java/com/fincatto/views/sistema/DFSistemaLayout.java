@@ -1,8 +1,7 @@
-package com.fincatto.views;
+package com.fincatto.views.sistema;
 
-import com.fincatto.views.admin.ViewEmpresas;
-import com.fincatto.views.home.HomeView;
-import com.fincatto.views.myview.MyViewView;
+import com.fincatto.views.admin.DFAdminViewAnimais;
+import com.fincatto.views.admin.DFAdminViewEmpresas;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -13,17 +12,16 @@ import com.vaadin.flow.component.orderedlayout.Scroller;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.RoutePrefix;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
-/**
- * The main view is a top-level placeholder for other views.
- */
-public class MainLayout extends AppLayout {
+@RoutePrefix(value = "sistema")
+public class DFSistemaLayout extends AppLayout {
 
     private H1 viewTitle;
 
-    public MainLayout() {
+    public DFSistemaLayout() {
         setPrimarySection(Section.DRAWER);
         addDrawerContent();
         addHeaderContent();
@@ -51,14 +49,14 @@ public class MainLayout extends AppLayout {
 
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
-        nav.addItem(new SideNavItem("Home", HomeView.class, LineAwesomeIcon.HOME_SOLID.create()));
-        nav.addItem(new SideNavItem("Empresas", ViewEmpresas.class, LineAwesomeIcon.BUILDING.create()));
-        nav.addItem(new SideNavItem("My View", MyViewView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        nav.addItem(new SideNavItem("Tutores", DFSistemaViewTutores.class, LineAwesomeIcon.PERSON_BOOTH_SOLID.create()));
+        nav.addItem(new SideNavItem("Animais", DFSistemaViewAnimais.class, LineAwesomeIcon.DOG_SOLID.create()));
         return nav;
     }
 
     private Footer createFooter() {
         Footer layout = new Footer();
+        layout.add(new Span("Footer"));
         return layout;
     }
 

@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 @SpringBootApplication
 @Theme(value = "scvet")
-public class Application implements AppShellConfigurator {
+public class DFApplication implements AppShellConfigurator {
 
     @Autowired
     DataSource dataSource;
@@ -28,12 +28,12 @@ public class Application implements AppShellConfigurator {
     private Environment environment;
 
     public static void main(String[] args) {
-        final ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        final ConfigurableApplicationContext context = SpringApplication.run(DFApplication.class, args);
         if (context.getEnvironment().getActiveProfiles().length > 0) {
-            Loggable.getLogger(Application.class).info("Sistema iniciando em modo de produção");
+            DFLoggable.getLogger(DFApplication.class).info("Sistema iniciando em modo de produção");
         } else {
             final String porta = Objects.requireNonNullElse(context.getEnvironment().getProperty("local.server.port"), "8080");
-            Loggable.getLogger(Application.class).info("Sistema em modo de desenvolvimento: http://localhost:{}", porta);
+            DFLoggable.getLogger(DFApplication.class).info("Sistema em modo de desenvolvimento: http://localhost:{}", porta);
         }
     }
 }

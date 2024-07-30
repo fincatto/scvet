@@ -1,6 +1,9 @@
 package com.fincatto.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -14,10 +17,10 @@ import java.util.UUID;
 @Data
 @Builder
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "usuario", schema = "public")
-public class EntityUsuario {
+@AllArgsConstructor
+@Table(name = "empresa", schema = "public")
+public class DFEntityEmpresa {
 
     @Id
     //@Type(type = "pg-uuid")
@@ -38,22 +41,4 @@ public class EntityUsuario {
     @Size(max = 100)
     @Column(name = "nome", nullable = false, length = 100)
     private String nome;
-
-    @NotNull
-    @Size(max = 100)
-    @Column(name = "email", nullable = false, length = 100)
-    private String email;
-
-    @NotNull
-    @Size(max = 100)
-    @Column(name = "senha", nullable = false, length = 100)
-    private String senha;
-
-    @Column(name = "confirmacao", nullable = true, updatable = true)
-    private LocalDateTime confirmacao;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_empresa")
-    private EntityEmpresa empresa;
-
 }

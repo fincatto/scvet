@@ -1,4 +1,4 @@
 package com.fincatto.services;
 
-public abstract class Service {
+public abstract class DFService {
 }
