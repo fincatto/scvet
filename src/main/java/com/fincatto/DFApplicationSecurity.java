@@ -37,13 +37,11 @@ public class DFApplicationSecurity extends VaadinWebSecurity {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // Customize your WebSecurity configuration.
         super.configure(web);
     }
 
     /**
-     * Demo UserDetailsManager which only provides two hardcoded
-     * in memory users and their roles.
+     * Demo UserDetailsManager which only provides two hardcoded  in memory users and their roles.
      * NOTE: This shouldn't be used in real world applications.
      */
     @Bean
@@ -51,12 +49,12 @@ public class DFApplicationSecurity extends VaadinWebSecurity {
         UserDetails user =
                 User.withUsername("user")
                         .password("{noop}user")
-                        .roles("USER")
+                        .roles(DFApplicationRoles.ROLE_USER)
                         .build();
         UserDetails admin =
                 User.withUsername("admin")
                         .password("{noop}admin")
-                        .roles("ADMIN", "USER")
+                        .roles(DFApplicationRoles.ROLE_ADMIN, DFApplicationRoles.ROLE_USER)
                         .build();
         return new InMemoryUserDetailsManager(user, admin);
     }

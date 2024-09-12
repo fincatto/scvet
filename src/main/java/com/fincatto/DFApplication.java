@@ -21,6 +21,8 @@ import java.util.Objects;
 @Theme(value = "scvet")
 public class DFApplication implements AppShellConfigurator {
 
+    public static String NAME = "SCVet";
+
     @Autowired
     DataSource dataSource;
 

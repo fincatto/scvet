@@ -1,5 +1,6 @@
 package com.fincatto.views.admin;
 
+import com.fincatto.DFApplication;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.Button;
@@ -29,35 +30,22 @@ public class DFAdminLayout extends AppLayout {
 
     public DFAdminLayout(AuthenticationContext authContext) {
         this.authContext = authContext;
-
         setPrimarySection(Section.DRAWER);
         addDrawerContent();
         addHeaderContent();
     }
 
     private void addHeaderContent() {
-        DrawerToggle toggle = new DrawerToggle();
-        toggle.setAriaLabel("Menu toggle");
+        final var toggle = new DrawerToggle();
+        //toggle.setAriaLabel("Menu toggle");
 
         viewTitle = new H1();
         viewTitle.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
-
-        HorizontalLayout
-                header =
-                authContext.getAuthenticatedUser(UserDetails.class)
-                        .map(user -> {
-                            Button logout = new Button("Logout", click ->
-                                    this.authContext.logout());
-                            Span loggedUser = new Span("Welcome " + user.getUsername());
-                            return new HorizontalLayout(viewTitle, loggedUser, logout);
-                        }).orElseGet(() -> new HorizontalLayout(viewTitle));
-
-
-        addToNavbar(true, toggle, header);
+        addToNavbar(true, toggle, viewTitle);
     }
 
     private void addDrawerContent() {
-        Span appName = new Span("SCVet");
+        Span appName = new Span(DFApplication.NAME);
         appName.addClassNames(LumoUtility.FontWeight.SEMIBOLD, LumoUtility.FontSize.LARGE);
 
 //        Span appMoto = new Span("Sistemas Veterinários");
@@ -83,8 +71,9 @@ public class DFAdminLayout extends AppLayout {
     }
 
     private Footer createFooter() {
-        Footer layout = new Footer();
-        return layout;
+        final var footer = new Footer();
+        footer.add(new Button("Logout", l -> this.authContext.logout()));
+        return footer;
     }
 
     @Override
@@ -94,7 +83,7 @@ public class DFAdminLayout extends AppLayout {
     }
 
     private String getCurrentPageTitle() {
-        PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
+        final var title = getContent().getClass().getAnnotation(PageTitle.class);
         return title == null ? "" : title.value();
     }
 }

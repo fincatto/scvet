@@ -9,13 +9,12 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
 @Entity
 @Data
 @Builder
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "usuario", schema = "public")
 public class DFEntityUsuario {
 

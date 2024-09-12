@@ -1,5 +1,7 @@
 package com.fincatto.views;
 
+import com.fincatto.DFApplication;
+import com.fincatto.DFApplicationSecurity;
 import com.fincatto.views.sistema.DFSistemaViewTutores;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
@@ -22,16 +24,11 @@ public class DFViewLogin extends VerticalLayout implements BeforeEnterObserver {
 
     public DFViewLogin(AuthenticationContext authContext) {
         this.authContext = authContext;
-
-        //addClassName("login-view");
         setSizeFull();
-
         setJustifyContentMode(JustifyContentMode.CENTER);
         setAlignItems(Alignment.CENTER);
-
         login.setAction("login");
-
-        add(new H1("Test Application"), login);
+        add(new H1(DFApplication.NAME), login);
     }
 
     @Override
